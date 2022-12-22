@@ -5,14 +5,16 @@ import com.porfolio.alecarb.entity.Educacion;
 import com.porfolio.alecarb.repository.IEducacionRepository;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class EducacionService {
     
     @Autowired
-    private IEducacionRepository educacionRepository;
+    IEducacionRepository educacionRepository;
     
     public List<Educacion> list(){
         return educacionRepository.findAll();

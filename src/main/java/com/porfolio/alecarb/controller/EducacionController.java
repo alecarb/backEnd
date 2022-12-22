@@ -7,7 +7,9 @@ import com.porfolio.alecarb.service.EducacionService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,35 +26,52 @@ public class EducacionController {
     @Autowired 
     EducacionService educacionService;
     
-    @GetMapping("/ver/educaciones")
+    @GetMapping("/list")
     @ResponseBody
     public List<Educacion> list(){
         return educacionService.list();
     }
     
-    @GetMapping("/educacion/{id}")
+    @GetMapping("/ver/{id}")
     @ResponseBody
-    public Optional<Educacion> findById(Long id){
-        return educacionService.findById(id);
+    public ResponseEntity<Educacion>getOneByID(@PathVariable(value = "id") Long id){
+        try {
+            Educacion educacion = educacionService.findById(id).get();
+            return new ResponseEntity(educacion,HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
     
     @PostMapping("/new/educacion")
-    public void save(@RequestBody Educacion nuevEducacion){
-        educacionService.save(nuevEducacion);
+    public void save(@RequestBody Educacion educacion){
+        educacionService.save(educacion);
     }
     
    
-    @PutMapping("/edit/educacion/{id}")
+    @PutMapping("/edit/{id}")
     @ResponseBody
-    public ResponseEntity<?> editEducacion(@PathVariable("id") Long id, EducacionDto educacionDto){
+    public ResponseEntity<?> editEducacion(@PathVariable("id") Long id,@RequestBody EducacionDto educacionDto){
         try {
             Educacion educacion = educacionService.findById(id).get(); //buscamos la educacion
             educacion.setImage_est(educacionDto.getImage_est());
             educacion.setInstitucion(educacionDto.getInstitucion());
-            educacion.setTitulo(educacionDto.getInstitucion());
-            educacionDto.se
+            educacion.setTitulo(educacionDto.getTitulo());
+            educacion.setFecha_inicio(educacionDto.getFecha_inicio());
+            educacion.setFecha_fin(educacionDto.getFecha_fin());
+            educacion.setEn_curso(educacionDto.isEn_curso());
+            
+            educacionService.save(educacion);
+            return new ResponseEntity<>(educacion,HttpStatus.OK);
+            
         } catch (Exception e) {
+            return new ResponseEntity<Educacion>(HttpStatus.NOT_FOUND);
         }
+    }
+    
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id){
+        educacionService.deleteById(id);
     }
     
 }

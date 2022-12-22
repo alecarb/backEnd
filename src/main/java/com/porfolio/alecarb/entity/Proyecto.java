@@ -18,10 +18,11 @@ public class Proyecto {
     private Long id;
     @Column(name = "proyecto")
     private String proyecto;
-    
-    public void Proyecto(){
-        
+
+    public Proyecto() {
     }
+    
+   
 
     public Proyecto(String proyecto) {
        

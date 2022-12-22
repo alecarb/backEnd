@@ -5,28 +5,30 @@ import com.porfolio.alecarb.entity.Trabajo;
 import com.porfolio.alecarb.repository.ITrabajoRepository;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class TrabajoService {
     
     @Autowired
-    private ITrabajoRepository trabajoRepository;
+    ITrabajoRepository trabajoRepository;
     
-    public List<Trabajo> listar_trabajos(){
+    public List<Trabajo> list(){
         return trabajoRepository.findAll();
     }
     
-    public Optional<Trabajo> traerTrabajo_x_id(Long id){
+    public Optional<Trabajo> findById(Long id){
         return trabajoRepository.findById(id);
     }
     
-    public Trabajo guardarTrabajo(Trabajo trabajo){
+    public Trabajo save(Trabajo trabajo){
         return trabajoRepository.save(trabajo);
     }
     
-    public void eliminar_trabajo_x_id(Long id){
+    public void deleteById(Long id){
         trabajoRepository.deleteById(id);
     }
 }

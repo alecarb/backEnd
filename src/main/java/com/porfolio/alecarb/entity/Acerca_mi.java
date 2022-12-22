@@ -24,7 +24,7 @@ public class Acerca_mi {
     @Column(name = "image_perfil")
     private String image_perfil;
     
-    public void Acerca_mi(){
+    public Acerca_mi(){
         
     }
 

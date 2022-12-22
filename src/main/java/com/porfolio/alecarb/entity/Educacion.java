@@ -28,7 +28,7 @@ public class Educacion {
     @Column (name = "en_curso")
     private boolean en_curso;
     
-    public void Educacion(){
+    public Educacion(){
         
     }
 

@@ -21,7 +21,7 @@ public class HardSkill {
     @Column (name = "porcentaje")
     private int porcentaje;
     
-    public void HardSkill(){
+    public HardSkill(){
         
     }
 

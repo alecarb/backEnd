@@ -21,9 +21,10 @@ public class SoftSkill {
     @Column (name = "porcentaje")
     private int porcentaje;
 
-    public void SoftSkill(){
-        
+    public SoftSkill() {
     }
+
+   
 
     public SoftSkill(String habilidad, int porcentaje) {
       

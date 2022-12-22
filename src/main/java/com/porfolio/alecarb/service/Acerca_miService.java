@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.porfolio.alecarb.service;
 
 import com.porfolio.alecarb.entity.Acerca_mi;
@@ -17,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class Acerca_miService {
     
     @Autowired
-    private IAcerca_miRepository acerca_miRepository;
+    IAcerca_miRepository acerca_miRepository;
     
     public List<Acerca_mi> list(){
        return acerca_miRepository.findAll();
