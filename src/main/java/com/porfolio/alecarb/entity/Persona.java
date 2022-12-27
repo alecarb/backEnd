@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity @Getter @Setter
-public class Usuario {
+public class Persona {
     
     @Id 
     @GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -31,11 +31,11 @@ public class Usuario {
     
     
     
-    public Usuario(){
+    public Persona(){
         
     }
     
-    public Usuario(String nombre, String apellido, String telefono, String email, String residencia, int dni) {
+    public Persona(String nombre, String apellido, String telefono, String email, String residencia, int dni) {
         
         this.nombre = nombre;
         this.apellido = apellido;

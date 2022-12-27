@@ -1,8 +1,8 @@
 
 package com.porfolio.alecarb.service;
 
-import com.porfolio.alecarb.entity.Usuario;
-import com.porfolio.alecarb.repository.IUsuarioRepository;
+import com.porfolio.alecarb.entity.Persona;
+import com.porfolio.alecarb.repository.IPersonaRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -15,24 +15,24 @@ import org.springframework.stereotype.Service;
 //parte de una única transacción y se realizarán de manera atómica. 
 //Esto es útil para garantizar la consistencia de los datos y evitar errores en operaciones 
 //que involucren varias operaciones de base de datos. 
-public class UsuarioService {
+public class PersonaService {
     @Autowired
-    IUsuarioRepository usuarioRepository;
+    IPersonaRepository personaRepository;
     
-    public List<Usuario> list(){
-        return usuarioRepository.findAll();
+    public List<Persona> list(){
+        return personaRepository.findAll();
     }
     
-    public Optional<Usuario> findById(Long id){
-        return usuarioRepository.findById(id);
+    public Optional<Persona> findById(Long id){
+        return personaRepository.findById(id);
     }
     
-    public void save(Usuario usuario){
-        usuarioRepository.save(usuario);
+    public void save(Persona persona){
+        personaRepository.save(persona);
     }
     
     public void deleteById(Long id){
-        usuarioRepository.deleteById(id);
+        personaRepository.deleteById(id);
     }
    
     

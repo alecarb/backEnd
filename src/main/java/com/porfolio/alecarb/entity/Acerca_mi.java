@@ -19,6 +19,7 @@ public class Acerca_mi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+  
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "image_perfil")

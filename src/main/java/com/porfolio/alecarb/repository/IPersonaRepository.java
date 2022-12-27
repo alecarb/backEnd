@@ -1,11 +1,11 @@
 
 package com.porfolio.alecarb.repository;
 
-import com.porfolio.alecarb.entity.Usuario;
+import com.porfolio.alecarb.entity.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUsuarioRepository  extends JpaRepository<Usuario, Long>{
+public interface IPersonaRepository  extends JpaRepository<Persona, Long>{
     
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class UsuarioDto implements Serializable{
+public class PersonaDto implements Serializable{
     
     private String nombre;
     private String apellido;
@@ -15,11 +15,11 @@ public class UsuarioDto implements Serializable{
     private String residencia;
     private int dni;
     
-    public UsuarioDto(){
+    public PersonaDto(){
         
     }
 
-    public UsuarioDto(String nombre, String apellido, String email, String telefono, String residencia, int dni) {
+    public PersonaDto(String nombre, String apellido, String email, String telefono, String residencia, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
