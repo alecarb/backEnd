@@ -45,13 +45,13 @@ public class Acerca_miController {
         }
     }
     
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/about")
     public void save(@RequestBody Acerca_mi acerca_mi){
         acerca_miService.save(acerca_mi);        
     }
     
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> editAbout (@PathVariable Long id, @RequestBody Acerca_miDto acerca_miDto){
@@ -67,7 +67,7 @@ public class Acerca_miController {
         }
     }
     
- 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         acerca_miService.deleteByid(id);

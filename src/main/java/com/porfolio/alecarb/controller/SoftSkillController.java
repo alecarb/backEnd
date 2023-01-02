@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,17 +44,20 @@ public class SoftSkillController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/skill") //llevo a esa ruta
     public void save(@RequestBody SoftSkill nuevSkill) { //nombre del metodo y el request que le paso en Json desde Postman
         softSkillService.save(nuevSkill); //traigo el metodo del servicio
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         softSkillService.deleteById(id);
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody SoftSkillDto softSkillDto) {

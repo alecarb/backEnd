@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,12 +44,13 @@ public class HardSkillController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/skill") //llevo a esa ruta
     public void save(@RequestBody HardSkill nuevSkill) { //nombre del metodo y el request que le paso en Json desde Postman
         hardSkillService.save(nuevSkill); //traigo el metodo del servicio
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody HardSkillDto hardSkillDto) {
@@ -66,6 +68,7 @@ public class HardSkillController {
 
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         hardSkillService.deleteById(id);

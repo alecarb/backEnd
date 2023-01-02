@@ -2,11 +2,16 @@
 package com.porfolio.alecarb.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +36,13 @@ public class Persona {
     
     
     
+    
     public Persona(){
         
     }
     
-    public Persona(String nombre, String apellido, String telefono, String email, String residencia, int dni) {
-        
+    public Persona(Long id, String nombre, String apellido, String telefono, String email, String residencia, int dni) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -45,8 +51,29 @@ public class Persona {
         this.dni= dni;
     }
     
-    
-            
-    
-    
+    //Estabelce la relacion 1-n entre persona 
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)    
+    private List<Educacion> educaciones;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)    
+    private List<Trabajo> trabajos;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)    
+    private List<Acerca_mi> acerca_mis;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)    
+    private List<HardSkill> hardSkills;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)    
+    private List<SoftSkill> softSkills;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY) 
+    private List<Proyecto> proyectos;
+
 }

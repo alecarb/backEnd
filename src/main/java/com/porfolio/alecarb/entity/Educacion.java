@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +29,7 @@ public class Educacion {
     @Column (name = "en_curso")
     private boolean en_curso;
     
+    
     public Educacion(){
         
     }
@@ -40,9 +42,12 @@ public class Educacion {
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.en_curso = en_curso;
+       
     }
     
-    
+    //Recibe la relacion 1-n 
+    @ManyToOne
+    private Persona persona;
     
     
     

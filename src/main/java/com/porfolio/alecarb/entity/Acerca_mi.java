@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,10 +22,11 @@ public class Acerca_mi {
     private Long id;
     
   
-    @Column(name = "descripcion")
+    @Column(name = "descripcion") @Lob //Un LOB es un valor muy largo que puede ser de cualquier tipo, como una cadena de texto o un archivo binario.
     private String descripcion;
     @Column(name = "image_perfil")
     private String image_perfil;
+    
     
     public Acerca_mi(){
         
@@ -33,8 +36,11 @@ public class Acerca_mi {
 
         this.descripcion = descripcion;
         this.image_perfil = image_perfil;
+        
     }
     
-    
+    //Recibe la relacion 1-n 
+    @ManyToOne
+    private Persona persona;
     
 }

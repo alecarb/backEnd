@@ -8,10 +8,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-//NO IMPORTA javax.validatios !!!
 
 @Entity
 @Getter
@@ -22,7 +22,8 @@ public class Rol {
     private Long id;
     
  
-    @Enumerated(EnumType.STRING) //poner el @NotNull solucionar eso
+    @Enumerated(EnumType.STRING) 
+    @NotNull
     private RolNombre rolNombre;
     
 }

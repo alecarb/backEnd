@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class ProyectoController {
     @Autowired
     ProyectoService proyectoService;
     
-    @GetMapping("/ver/proyectos") //trae en esa ruta
+    @GetMapping("/list") //trae en esa ruta
     @ResponseBody //la respuesta del cuerpo
     public List<Proyecto> verproyectos() { //creo el metodo del controlador
         return proyectoService.list(); //aca llamo al metodo del servicio
@@ -44,11 +45,13 @@ public class ProyectoController {
         }
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/proyecto")
     public void save(@RequestBody Proyecto proyecto){
         proyectoService.save(proyecto);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable Long id, @RequestBody ProyectoDto proyectoDto){
@@ -63,6 +66,7 @@ public class ProyectoController {
         }        
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         proyectoService.deleteById(id);

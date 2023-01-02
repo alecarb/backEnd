@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class HardSkill {
     @Column (name = "porcentaje")
     private int porcentaje;
     
+    
     public HardSkill(){
         
     }
@@ -29,8 +31,11 @@ public class HardSkill {
         
         this.habilidad = habilidad;
         this.porcentaje = porcentaje;
+      
     }
     
-    
+    //Recibe la relacion 1-n 
+    @ManyToOne
+    private Persona persona;
     
 }

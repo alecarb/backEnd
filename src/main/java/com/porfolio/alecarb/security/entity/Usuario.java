@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,13 +22,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //poner el NotNull solucionar ese problema
+    @NotNull
     private String nombre;
     @Column(unique = true)
     private String nombreUsuario;
-    //Not null
+    @NotNull
     private String email;
-    //Not null
+    @NotNull
     private String password;
     
     @ManyToMany(fetch = FetchType.EAGER)
