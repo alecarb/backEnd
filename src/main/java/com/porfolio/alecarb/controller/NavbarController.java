@@ -1,13 +1,14 @@
+
 package com.porfolio.alecarb.controller;
 
-import com.porfolio.alecarb.dto.SoftSkillDto;
+import com.porfolio.alecarb.dto.NavbarDto;
+import com.porfolio.alecarb.entity.Navbar;
 import com.porfolio.alecarb.entity.SoftSkill;
-import com.porfolio.alecarb.service.SoftSkillService;
+import com.porfolio.alecarb.service.NavbarService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +21,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/softSkill")
+@RequestMapping("/navbar")
 @CrossOrigin(origins = "http://localhost:4200")
-public class SoftSkillController {
-
+public class NavbarController {
+    
     @Autowired
-    SoftSkillService softSkillService;
+    NavbarService navbarService;
 
     @GetMapping("/list")
     @ResponseBody
-    public List<SoftSkill> list() {
-        return softSkillService.list();
+    public List<Navbar> list() {
+        return navbarService.list();
 
     }
 
@@ -38,41 +39,48 @@ public class SoftSkillController {
     @ResponseBody
     public ResponseEntity<SoftSkill>getOneByID(@PathVariable(value = "id") Long id){
         try {
-            SoftSkill softSkill = softSkillService.findById(id).get();
-            return new ResponseEntity(softSkill,HttpStatus.OK);
+            Navbar navbar = navbarService.findById(id).get();
+            return new ResponseEntity(navbar,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     
     //@PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/new/skill") //llevo a esa ruta
-    public void save(@RequestBody SoftSkill nuevSkill) { //nombre del metodo y el request que le paso en Json desde Postman
-        softSkillService.save(nuevSkill); //traigo el metodo del servicio
+    @PostMapping("/new/navbar") //llevo a esa ruta
+    public void save(@RequestBody Navbar nuevo) { //nombre del metodo y el request que le paso en Json desde Postman
+        navbarService.save(nuevo); //traigo el metodo del servicio
     }
     
     //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
-        softSkillService.deleteById(id);
+        navbarService.deleteById(id);
     }
     
     //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
-    public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody SoftSkillDto softSkillDto) {
+    public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody NavbarDto navbarDto) {
         try {
-            SoftSkill softSkill = softSkillService.findById(id).get();
-            softSkill.setHabilidad(softSkillDto.getHabilidad());
-            softSkill.setPorcentaje(softSkillDto.getPorcentaje());
-            
-            softSkillService.save(softSkill);
-            return new ResponseEntity<>(softSkill, HttpStatus.OK);
+            Navbar navbar = navbarService.findById(id).get();
+            navbar.setFacebook(navbarDto.getFacebook());
+            navbar.setInstagram(navbarDto.getInstagram());
+            navbar.setLinkedin(navbarDto.getLinkedin());
+            navbar.setLogo(navbarDto.getLogo());
+            return new ResponseEntity<>(navbarDto, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("Error updating user: " + e);
-            return new ResponseEntity<SoftSkill>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Navbar>(HttpStatus.NOT_FOUND);
         }
 
     }
 
+
+    
+    
+    
+    
+    
+    
 }

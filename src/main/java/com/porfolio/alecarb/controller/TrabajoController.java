@@ -45,13 +45,13 @@ public class TrabajoController {
         }
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/trabajo")
     public void save(@RequestBody Trabajo trabajo){
         trabajoService.save(trabajo);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> editTrabajo(@PathVariable Long id,@RequestBody TrabajoDto trabajoDto){
@@ -71,7 +71,7 @@ public class TrabajoController {
         }
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         trabajoService.deleteById(id);

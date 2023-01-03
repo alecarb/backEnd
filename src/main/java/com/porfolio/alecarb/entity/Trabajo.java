@@ -17,6 +17,8 @@ public class Trabajo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(name = "empresa")
+    private  String empresa;
     @Column(name = "image_trab")
     private String image_trab;
     @Column(name = "puesto")
@@ -34,8 +36,9 @@ public class Trabajo {
     public Trabajo() {
     }
 
-    public Trabajo(Long id, String image_trab, String puesto, String text_descrip, String fecha_inicio, String fecha_fin, Long id_persona) {
+    public Trabajo(Long id,String empresa ,String image_trab, String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url) {
         this.id = id;
+        this.empresa = empresa;
         this.image_trab = image_trab;
         this.puesto = puesto;
         this.text_descrip = text_descrip;

@@ -45,13 +45,13 @@ public class EducacionController {
         }
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/educacion")
     public void save(@RequestBody Educacion educacion){
         educacionService.save(educacion);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> editEducacion(@PathVariable("id") Long id,@RequestBody EducacionDto educacionDto){
@@ -72,7 +72,7 @@ public class EducacionController {
         }
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+ //   @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         educacionService.deleteById(id);

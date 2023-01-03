@@ -45,13 +45,13 @@ public class ProyectoController {
         }
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/proyecto")
     public void save(@RequestBody Proyecto proyecto){
         proyectoService.save(proyecto);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable Long id, @RequestBody ProyectoDto proyectoDto){
@@ -66,7 +66,7 @@ public class ProyectoController {
         }        
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         proyectoService.deleteById(id);

@@ -24,18 +24,16 @@ public class Acerca_mi {
   
     @Column(name = "descripcion") @Lob //Un LOB es un valor muy largo que puede ser de cualquier tipo, como una cadena de texto o un archivo binario.
     private String descripcion;
-    @Column(name = "image_perfil")
-    private String image_perfil;
+    
     
     
     public Acerca_mi(){
         
     }
 
-    public Acerca_mi(String descripcion, String image_perfil) {
+    public Acerca_mi(String descripcion) {
 
         this.descripcion = descripcion;
-        this.image_perfil = image_perfil;
         
     }
     

@@ -45,19 +45,19 @@ public class PersonaControlller {
     }
 
 
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/persona") //llevo a esa ruta
     public void save(@RequestBody Persona nuevPersona) { //nombre del metodo y el request que le paso en Json desde Postman
         personaService.save(nuevPersona); //traigo el metodo del servicio
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deletePersonaByid(@PathVariable Long id) {
         personaService.deleteById(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> editPersona(@PathVariable Long id, @RequestBody PersonaDto personaDto) {

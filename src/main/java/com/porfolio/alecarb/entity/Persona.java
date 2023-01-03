@@ -33,6 +33,8 @@ public class Persona {
     private String residencia;
     @Column (name = "dni")
     private int dni;
+    @Column(name = "image_perfil")
+    private String image_perfil;
     
     
     
@@ -41,7 +43,7 @@ public class Persona {
         
     }
     
-    public Persona(Long id, String nombre, String apellido, String telefono, String email, String residencia, int dni) {
+    public Persona(Long id, String nombre, String apellido, String telefono, String email, String residencia, int dni, String image_perfil) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -49,6 +51,7 @@ public class Persona {
         this.email = email;
         this.residencia = residencia;
         this.dni= dni;
+        this.image_perfil = image_perfil;
     }
     
     //Estabelce la relacion 1-n entre persona 

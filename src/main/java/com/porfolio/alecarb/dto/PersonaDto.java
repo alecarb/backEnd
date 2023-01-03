@@ -14,18 +14,20 @@ public class PersonaDto implements Serializable{
     private String telefono;
     private String residencia;
     private int dni;
+    private String image_perfil;
     
     public PersonaDto(){
         
     }
 
-    public PersonaDto(String nombre, String apellido, String email, String telefono, String residencia, int dni) {
+    public PersonaDto(String nombre, String apellido, String email, String telefono, String residencia, int dni, String image_perfil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
         this.residencia = residencia;
         this.dni = dni;
+        this.image_perfil = image_perfil;
     }
 
     

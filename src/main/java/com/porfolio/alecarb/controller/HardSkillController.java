@@ -44,13 +44,13 @@ public class HardSkillController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new/skill") //llevo a esa ruta
     public void save(@RequestBody HardSkill nuevSkill) { //nombre del metodo y el request que le paso en Json desde Postman
         hardSkillService.save(nuevSkill); //traigo el metodo del servicio
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+  //  @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody HardSkillDto hardSkillDto) {
@@ -68,7 +68,7 @@ public class HardSkillController {
 
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+  //  @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         hardSkillService.deleteById(id);
