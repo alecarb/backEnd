@@ -64,7 +64,7 @@ public class NavbarController {
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody NavbarDto navbarDto) {
         try {
             Navbar navbar = navbarService.findById(id).get();
-            navbar.setFacebook(navbarDto.getFacebook());
+            navbar.setGithub(navbarDto.getGithub());
             navbar.setInstagram(navbarDto.getInstagram());
             navbar.setLinkedin(navbarDto.getLinkedin());
             navbar.setLogo(navbarDto.getLogo());

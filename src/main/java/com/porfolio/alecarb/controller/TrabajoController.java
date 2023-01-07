@@ -57,6 +57,7 @@ public class TrabajoController {
     public ResponseEntity<?> editTrabajo(@PathVariable Long id,@RequestBody TrabajoDto trabajoDto){
         try {
             Trabajo trabajo = trabajoService.findById(id).get();
+            trabajo.setEmpresa(trabajoDto.getEmpresa());
             trabajo.setImage_trab(trabajoDto.getImage_trab());
             trabajo.setPuesto(trabajoDto.getPuesto());
             trabajo.setFecha_inicio(trabajoDto.getFecha_inicio());

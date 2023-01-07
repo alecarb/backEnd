@@ -16,8 +16,8 @@ public class Navbar {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "facebook")
-    private String facebook;
+    @Column(name = "github")
+    private String github;
     @Column(name = "instagram")
     private String instagram;
     @Column(name = "linkedin")
@@ -28,9 +28,9 @@ public class Navbar {
     public Navbar() {
     }
 
-    public Navbar(Long id, String facebook, String instagram, String linkedin, String logo, Persona persona) {
+    public Navbar(Long id, String github, String instagram, String linkedin, String logo, Persona persona) {
         this.id = id;
-        this.facebook = facebook;
+        this.github = github;
         this.instagram = instagram;
         this.linkedin = linkedin;
         this.logo = logo;

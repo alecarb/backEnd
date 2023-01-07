@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 public class TrabajoDto implements Serializable{
     
+    private String empresa;
     private String image_trab;
     private String puesto;
     private String text_descrip;
@@ -20,7 +21,8 @@ public class TrabajoDto implements Serializable{
         
     }
 
-    public TrabajoDto(String image_trab, String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url) {
+    public TrabajoDto(String empresa, String image_trab, String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url) {
+        this.empresa = empresa;
         this.image_trab = image_trab;
         this.puesto = puesto;
         this.text_descrip = text_descrip;
