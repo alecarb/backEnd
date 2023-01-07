@@ -19,8 +19,8 @@ public class Trabajo {
     
     @Column(name = "empresa")
     private  String empresa;
-    @Column(name = "image_trab")
-    private String image_trab;
+    //@Column(name = "image_trab")
+    //private String image_trab;
     @Column(name = "puesto")
     private String puesto;
     @Column(name = "text_descrip")
@@ -36,10 +36,10 @@ public class Trabajo {
     public Trabajo() {
     }
 
-    public Trabajo(Long id,String empresa ,String image_trab, String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url) {
+    public Trabajo(Long id,String empresa , String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url) {
         this.id = id;
         this.empresa = empresa;
-        this.image_trab = image_trab;
+       // this.image_trab = image_trab;
         this.puesto = puesto;
         this.text_descrip = text_descrip;
         this.fecha_inicio = fecha_inicio;

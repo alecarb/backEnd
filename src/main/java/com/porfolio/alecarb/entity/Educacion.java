@@ -16,8 +16,8 @@ public class Educacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "image_est")
-    private String image_est;
+    //@Column(name = "image_est")
+    //private String image_est;
     @Column(name = "institucion")
     private String institucion;
     @Column(name = "titulo")
@@ -34,9 +34,9 @@ public class Educacion {
         
     }
 
-    public Educacion(String image_est, String institucion, String titulo, String fecha_inicio, String fecha_fin, boolean en_curso) {
+    public Educacion( String institucion, String titulo, String fecha_inicio, String fecha_fin, boolean en_curso) {
         
-        this.image_est = image_est;
+        //this.image_est = image_est;
         this.institucion = institucion;
         this.titulo = titulo;
         this.fecha_inicio = fecha_inicio;

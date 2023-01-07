@@ -58,7 +58,7 @@ public class TrabajoController {
         try {
             Trabajo trabajo = trabajoService.findById(id).get();
             trabajo.setEmpresa(trabajoDto.getEmpresa());
-            trabajo.setImage_trab(trabajoDto.getImage_trab());
+            //trabajo.setImage_trab(trabajoDto.getImage_trab());
             trabajo.setPuesto(trabajoDto.getPuesto());
             trabajo.setFecha_inicio(trabajoDto.getFecha_inicio());
             trabajo.setFecha_fin(trabajoDto.getFecha_fin());

@@ -57,7 +57,7 @@ public class EducacionController {
     public ResponseEntity<?> editEducacion(@PathVariable("id") Long id,@RequestBody EducacionDto educacionDto){
         try {
             Educacion educacion = educacionService.findById(id).get(); //buscamos la educacion
-            educacion.setImage_est(educacionDto.getImage_est());
+            //educacion.setImage_est(educacionDto.getImage_est());
             educacion.setInstitucion(educacionDto.getInstitucion());
             educacion.setTitulo(educacionDto.getTitulo());
             educacion.setFecha_inicio(educacionDto.getFecha_inicio());

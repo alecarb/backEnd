@@ -9,7 +9,7 @@ import lombok.Setter;
 public class EducacionDto implements Serializable{
     
 
-    private String image_est;
+   // private String image_est;
     
     private String institucion;
    
@@ -25,9 +25,9 @@ public class EducacionDto implements Serializable{
         
     }
 
-    public EducacionDto(String image_est, String institucion, String titulo, String fecha_inicio, String fecha_fin, boolean en_curso) {
+    public EducacionDto(String institucion, String titulo, String fecha_inicio, String fecha_fin, boolean en_curso) {
         
-        this.image_est = image_est;
+        //this.image_est = image_est;
         this.institucion = institucion;
         this.titulo = titulo;
         this.fecha_inicio = fecha_inicio;
