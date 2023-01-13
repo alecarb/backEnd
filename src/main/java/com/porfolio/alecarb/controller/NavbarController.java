@@ -6,6 +6,8 @@ import com.porfolio.alecarb.entity.Navbar;
 import com.porfolio.alecarb.entity.SoftSkill;
 import com.porfolio.alecarb.service.NavbarService;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/navbar")
 @CrossOrigin(origins = "http://localhost:4200")
 public class NavbarController {
+    
+     //instancia del logger 
+   Logger log = LoggerFactory.getLogger(NavbarController.class);
+
+
+    
+    
     
     @Autowired
     NavbarService navbarService;
@@ -62,12 +71,13 @@ public class NavbarController {
     @PutMapping("/edit/{id}")
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody NavbarDto navbarDto) {
+        log.info("El id recibido es: " + navbarDto.getId());
+
         try {
             Navbar navbar = navbarService.findById(id).get();
-            navbar.setGithub(navbarDto.getGithub());
-            navbar.setInstagram(navbarDto.getInstagram());
-            navbar.setLinkedin(navbarDto.getLinkedin());
+            navbar.setRed(navbarDto.getRed());
             navbar.setLogo(navbarDto.getLogo());
+            navbar.setNombre(navbarDto.getNombre());
             return new ResponseEntity<>(navbarDto, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("Error updating user: " + e);

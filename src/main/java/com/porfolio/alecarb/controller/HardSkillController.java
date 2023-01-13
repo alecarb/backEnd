@@ -55,12 +55,12 @@ public class HardSkillController {
     @ResponseBody
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @RequestBody HardSkillDto hardSkillDto) {
         try {
-            HardSkill softSkill = hardSkillService.findByid(id).get();
-            softSkill.setHabilidad(hardSkillDto.getHabilidad());
-            softSkill.setPorcentaje(hardSkillDto.getPorcentaje());
+            HardSkill hardSkill = hardSkillService.findByid(id).get();
+            hardSkill.setHabilidad(hardSkillDto.getHabilidad());
+            hardSkill.setPorcentaje(hardSkillDto.getPorcentaje());
             
-            hardSkillService.save(softSkill);
-            return new ResponseEntity<>(softSkill, HttpStatus.OK);
+            hardSkillService.save(hardSkill);
+            return new ResponseEntity<>(hardSkill, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("Error updating user: " + e);
             return new ResponseEntity<HardSkill>(HttpStatus.NOT_FOUND);

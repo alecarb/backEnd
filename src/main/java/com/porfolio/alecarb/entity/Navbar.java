@@ -16,25 +16,22 @@ public class Navbar {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "github")
-    private String github;
-    @Column(name = "instagram")
-    private String instagram;
-    @Column(name = "linkedin")
-    private String linkedin;
-    @Column(name = "logo")
+    @Column (name = "red")
+    private String red;
+    @Column (name = "nombre")
+    private String nombre;
+    @Column (name = "logo")
     private String logo;
 
     public Navbar() {
     }
 
-    public Navbar(Long id, String github, String instagram, String linkedin, String logo, Persona persona) {
+    public Navbar(Long id, String red, Persona persona, String nombre, String logo) {
         this.id = id;
-        this.github = github;
-        this.instagram = instagram;
-        this.linkedin = linkedin;
-        this.logo = logo;
+        this.red= red;
         this.persona = persona;
+        this.nombre = nombre;
+        this.logo = logo;
     }
     
     //Recibe la relacion 1-n 

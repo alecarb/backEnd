@@ -19,20 +19,20 @@ public class EducacionDto implements Serializable{
     
     private String fecha_fin;
   
-    private boolean en_curso;
+    //private boolean en_curso;
     
     private EducacionDto(){
         
     }
 
-    public EducacionDto(String institucion, String titulo, String fecha_inicio, String fecha_fin, boolean en_curso) {
+    public EducacionDto(String institucion, String titulo, String fecha_inicio, String fecha_fin) {
         
         //this.image_est = image_est;
         this.institucion = institucion;
         this.titulo = titulo;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
-        this.en_curso = en_curso;
+        //this.en_curso = en_curso;
     }
     
     

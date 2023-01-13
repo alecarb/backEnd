@@ -62,7 +62,7 @@ public class EducacionController {
             educacion.setTitulo(educacionDto.getTitulo());
             educacion.setFecha_inicio(educacionDto.getFecha_inicio());
             educacion.setFecha_fin(educacionDto.getFecha_fin());
-            educacion.setEn_curso(educacionDto.isEn_curso());
+            //educacion.setEn_curso(educacionDto.isEn_curso());
             
             educacionService.save(educacion);
             return new ResponseEntity<>(educacion,HttpStatus.OK);

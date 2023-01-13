@@ -55,28 +55,32 @@ public class Persona {
     }
     
     //Estabelce la relacion 1-n entre persona 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
     private List<Educacion> educaciones;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
     private List<Trabajo> trabajos;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
     private List<Acerca_mi> acerca_mis;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
     private List<HardSkill> hardSkills;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
     private List<SoftSkill> softSkills;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY) 
     private List<Proyecto> proyectos;
+    
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private List<Navbar> navbars;
 
 }

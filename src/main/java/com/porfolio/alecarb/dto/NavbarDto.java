@@ -7,18 +7,18 @@ import lombok.Setter;
 @Getter @Setter
 public class NavbarDto {
     
-    private String github;  
-    private String instagram;   
-    private String linkedin;   
+    private Long id;
+    private String red;
     private String logo;
+    private String nombre;
 
     public NavbarDto() {
     }
 
-    public NavbarDto(String github, String instagram, String linkedin, String logo) {
-        this.github = github;
-        this.instagram = instagram;
-        this.linkedin = linkedin;
+    public NavbarDto(Long id, String red, String logo, String nombre) {
+        this.id = id;
+        this.red = red;
+        this.nombre = nombre;
         this.logo = logo;
     }
     

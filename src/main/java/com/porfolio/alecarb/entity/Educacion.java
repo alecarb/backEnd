@@ -26,22 +26,23 @@ public class Educacion {
     private String fecha_inicio;
     @Column(name = "Fecha_fin")
     private String fecha_fin;
-    @Column (name = "en_curso")
-    private boolean en_curso;
+    //@Column (name = "en_curso")
+    //private boolean en_curso;
     
     
     public Educacion(){
         
     }
 
-    public Educacion( String institucion, String titulo, String fecha_inicio, String fecha_fin, boolean en_curso) {
+    public Educacion( String institucion, String titulo, String fecha_inicio, String fecha_fin, Persona persona) {
         
         //this.image_est = image_est;
+        this.persona = persona;
         this.institucion = institucion;
         this.titulo = titulo;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
-        this.en_curso = en_curso;
+        //this.en_curso = en_curso;
        
     }
     

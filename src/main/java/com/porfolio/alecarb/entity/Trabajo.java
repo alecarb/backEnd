@@ -36,7 +36,7 @@ public class Trabajo {
     public Trabajo() {
     }
 
-    public Trabajo(Long id,String empresa , String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url) {
+    public Trabajo(Long id,String empresa , String puesto, String text_descrip, String fecha_inicio, String fecha_fin, String url, Persona persona) {
         this.id = id;
         this.empresa = empresa;
        // this.image_trab = image_trab;
@@ -45,6 +45,7 @@ public class Trabajo {
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.url = url;
+        this.persona = persona;
         
        
     }

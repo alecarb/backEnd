@@ -31,12 +31,13 @@ public class Acerca_mi {
         
     }
 
-    public Acerca_mi(String descripcion) {
-
+    public Acerca_mi(Long id, String descripcion, Persona persona) {
+        this.id = id;
         this.descripcion = descripcion;
-        
+        this.persona = persona;
     }
-    
+
+   
     //Recibe la relacion 1-n 
     @ManyToOne
     private Persona persona;

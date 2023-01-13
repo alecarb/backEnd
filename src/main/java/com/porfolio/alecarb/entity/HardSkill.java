@@ -27,8 +27,8 @@ public class HardSkill {
         
     }
 
-    public HardSkill(String habilidad, int porcentaje) {
-        
+    public HardSkill(String habilidad, int porcentaje, Persona persona) {
+        this.persona = persona;
         this.habilidad = habilidad;
         this.porcentaje = porcentaje;
       

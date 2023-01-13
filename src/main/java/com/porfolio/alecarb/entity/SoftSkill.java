@@ -28,8 +28,8 @@ public class SoftSkill {
 
    
 
-    public SoftSkill(String habilidad, int porcentaje) {
-      
+    public SoftSkill(String habilidad, int porcentaje, Persona persona) {
+        this.persona = persona;
         this.habilidad = habilidad;
         this.porcentaje = porcentaje;
        
