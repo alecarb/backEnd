@@ -24,7 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/navbar")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://alecarbargprog.web.app")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class NavbarController {
     
      //instancia del logger 
