@@ -1,15 +1,12 @@
 
 package com.porfolio.alecarb.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,9 +35,7 @@ public class Navbar {
     }
     
     //Recibe la relacion 1-n 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "persona_id") // crea y añade la FK
-    @NotNull
+    @ManyToOne
     private Persona persona;
     
 }
