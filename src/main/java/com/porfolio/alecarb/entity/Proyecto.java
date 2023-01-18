@@ -1,12 +1,15 @@
 
 package com.porfolio.alecarb.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,18 +33,21 @@ public class Proyecto {
     
    
 
-    public Proyecto(String proyecto) {
+    public Proyecto(String proyecto, String descripcion, String image_proy, Persona persona) {
        
         this.proyecto = proyecto;
         this.descripcion = descripcion;
         this.image_proy = image_proy;
+        this.persona = persona;
         
       
     }
     
     
-    //Recibe la relacion 1-n 
-    @ManyToOne
+   //Recibe la relacion 1-n 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "persona_id") // crea y añade la FK
+    @NotNull
     private Persona persona;
     
 }
