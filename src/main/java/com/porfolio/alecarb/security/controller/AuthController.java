@@ -7,7 +7,6 @@ import com.porfolio.alecarb.security.entity.Rol;
 import com.porfolio.alecarb.security.entity.Usuario;
 import com.porfolio.alecarb.security.enums.RolNombre;
 import com.porfolio.alecarb.security.jwt.JwtProvider;
-import com.porfolio.alecarb.security.repository.IUsuarioRepository;
 import com.porfolio.alecarb.security.service.RolService;
 import com.porfolio.alecarb.security.service.UsuarioService;
 import java.util.HashSet;
@@ -89,10 +88,6 @@ public class AuthController {
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         
-        // Obtener el id de la persona
-  //Usuario usuario = IUsuarioRepository.findById(userDetails.getUsername())
-   // .orElseThrow(() -> new Exception("Usuario no encontrado: " + userDetails.getUsername()));
-  //Long idUsuario = usuario.getId();
 
         JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
 

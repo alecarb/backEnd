@@ -23,7 +23,7 @@ public class PersonaService {
         return personaRepository.findAll();
     }
     
-    public Optional<Persona> findById(Long id){
+    public Optional<Persona> findById(int id){
         return personaRepository.findById(id);
     }
     
@@ -31,8 +31,12 @@ public class PersonaService {
         personaRepository.save(persona);
     }
     
-    public void deleteById(Long id){
+    public void deleteById(int id){
         personaRepository.deleteById(id);
+    }
+    
+    public Persona findPersonaId(int id){
+        return personaRepository.getOne(id);
     }
    
     

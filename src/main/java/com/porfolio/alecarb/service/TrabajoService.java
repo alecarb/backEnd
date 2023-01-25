@@ -20,7 +20,7 @@ public class TrabajoService {
         return trabajoRepository.findAll();
     }
     
-    public Optional<Trabajo> findById(Long id){
+    public Optional<Trabajo> findById(int id){
         return trabajoRepository.findById(id);
     }
     
@@ -28,7 +28,11 @@ public class TrabajoService {
         return trabajoRepository.save(trabajo);
     }
     
-    public void deleteById(Long id){
+    public void deleteById(int id){
         trabajoRepository.deleteById(id);
+    }
+    
+    public boolean existsById(int id){
+        return trabajoRepository.existsById(id);
     }
 }

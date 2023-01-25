@@ -20,7 +20,7 @@ public class SoftSkillService {
         return softSkillRepository.findAll();
     }
     
-    public Optional<SoftSkill> findById(Long id){
+    public Optional<SoftSkill> findById(int id){
         return softSkillRepository.findById(id);
     }
     
@@ -28,7 +28,7 @@ public class SoftSkillService {
         softSkillRepository.save(softSkill);
     }
     
-    public void deleteById(Long id){
+    public void deleteById(int id){
         softSkillRepository.deleteById(id);
     }
 }

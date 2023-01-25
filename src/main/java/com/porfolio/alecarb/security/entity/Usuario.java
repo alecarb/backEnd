@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotNull
     private String nombre;
     @Column(unique = true)
@@ -31,14 +31,22 @@ public class Usuario {
     @NotNull
     private String password;
     
+    @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
+    //join collum hace referencia a la columna que hace referencia haci esta
+    //Es decir la tabla usuario_rol va a tener un campo que se llama id_usuario
+    //inverseJoinColumns = el inverso, hace referencia a rol
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();  
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String nombreUsuario, String email, String password) {
+    //Constructor sin id ni roles
+    public Usuario(@NotNull String nombre,
+                   @NotNull String nombreUsuario, 
+                   @NotNull String email, 
+                   @NotNull String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;

@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
+
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
@@ -22,10 +22,10 @@ public class Acerca_mi {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     
   
-    @Column(name = "descripcion") @Lob //Un LOB es un valor muy largo que puede ser de cualquier tipo, como una cadena de texto o un archivo binario.
+    @Column(name = "descripcion") 
     private String descripcion;
     
     
@@ -34,8 +34,8 @@ public class Acerca_mi {
         
     }
 
-    public Acerca_mi(Long id, String descripcion, Persona persona) {
-        this.id = id;
+    public Acerca_mi( String descripcion, Persona persona) {
+       
         this.descripcion = descripcion;
         this.persona = persona;
     }

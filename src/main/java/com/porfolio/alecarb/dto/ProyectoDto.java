@@ -2,7 +2,7 @@
 package com.porfolio.alecarb.dto;
 
 import java.io.Serializable;
-import java.lang.module.InvalidModuleDescriptorException;
+
 import lombok.Getter;
 import lombok.Setter;
 @Getter @Setter
@@ -15,7 +15,7 @@ public class ProyectoDto implements Serializable{
         
     }
 
-    public ProyectoDto(String proyecto) {
+    public ProyectoDto(String proyecto, String descripcion, String image_proy) {
         this.proyecto = proyecto;
         this.descripcion = descripcion;
         this.image_proy = image_proy;

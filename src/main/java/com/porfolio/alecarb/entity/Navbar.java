@@ -18,7 +18,7 @@ public class Navbar {
     
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column (name = "red")
     private String red;
     @Column (name = "nombre")
@@ -29,7 +29,7 @@ public class Navbar {
     public Navbar() {
     }
 
-    public Navbar(Long id, String red, Persona persona, String nombre, String logo) {
+    public Navbar(Integer id, String red, Persona persona, String nombre, String logo) {
         this.id = id;
         this.red= red;
         this.persona = persona;
@@ -40,7 +40,7 @@ public class Navbar {
     //Recibe la relacion 1-n 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "persona_id") // crea y añade la FK
-    @NotNull
+  
     private Persona persona;
     
 }

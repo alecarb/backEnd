@@ -19,7 +19,7 @@ public class Proyecto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(name = "proyecto")
     private String proyecto;
     @Column(name = "descripcion")
@@ -33,8 +33,8 @@ public class Proyecto {
     
    
 
-    public Proyecto(String proyecto, String descripcion, String image_proy, Persona persona) {
-       
+    public Proyecto(Integer id, String proyecto, String descripcion, String image_proy, Persona persona) {
+        this.id = id;
         this.proyecto = proyecto;
         this.descripcion = descripcion;
         this.image_proy = image_proy;

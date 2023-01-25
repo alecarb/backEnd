@@ -22,6 +22,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
+//con prePostEnabled se para indicar a que metodos puede acceder solo el admin
+//Los metodos que no lleven anotacion pueden acceder el admin como un genereic user
+//@preauthorized solo puede acceder el admin
 @EnableWebMvc
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 
@@ -30,6 +33,7 @@ public class MainSecurity implements WebMvcConfigurer{
     @Autowired
     UserDetailsImpl userDetailsImplements;
 
+    //Devuelve el mensaje de no autorizado
     @Autowired
     JwtEntryPoint jwtEntryPoint;
 
@@ -37,7 +41,10 @@ public class MainSecurity implements WebMvcConfigurer{
     public JwtTokenFilter jwtTokenFilter() {
         return new JwtTokenFilter();
     }
-
+    /**
+     * Encripta el pasword 
+     * @return password encriptado
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

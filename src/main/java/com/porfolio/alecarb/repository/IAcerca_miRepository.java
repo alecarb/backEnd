@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IAcerca_miRepository extends JpaRepository<Acerca_mi, Long>{
+public interface IAcerca_miRepository extends JpaRepository<Acerca_mi, Integer>{
     
 }

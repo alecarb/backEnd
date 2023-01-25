@@ -21,7 +21,7 @@ public class NavbarService {
         return navbarRepository.findAll();
     }
     
-    public Optional<Navbar> findById(Long id){
+    public Optional<Navbar> findById(int id){
         return navbarRepository.findById(id);
     }
     
@@ -29,7 +29,7 @@ public class NavbarService {
         navbarRepository.save(navbar);
     }
         
-    public void deleteById(Long id){
+    public void deleteById(int id){
         navbarRepository.deleteById(id);
     }
 }

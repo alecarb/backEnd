@@ -15,14 +15,29 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+/*
+Clase que genera el token y valida que este bien formado y no esten expirado
+*/
+
 @Component
 public class JwtProvider {
-        private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
     
+    //Implentacion de un logger para ver cual metodo da error en caso de falla
+    private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+    
+    
+    //Valores que tenemos en el properties
     @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.expiration}")
     private int expiration;
+    
+    /**
+     * 
+     * setIssuedAt --> Asigna fecha de creacion del token
+     * setExpiration --> Asigna fecha de expiracion
+     * signWith --> Firma
+     */
     
     public String generateToken(Authentication authentication) {
         UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
@@ -32,12 +47,12 @@ public class JwtProvider {
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
-    
+    //subject --> Nombre del usuario
     public String getNombreUsuarioFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
     
-    public boolean validateToken(String token) {
+    public Boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;

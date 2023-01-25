@@ -19,7 +19,7 @@ public class HardSkill {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(name = "habilidad")
     private String habilidad;
     @Column (name = "porcentaje")
@@ -30,11 +30,11 @@ public class HardSkill {
         
     }
 
-    public HardSkill(String habilidad, int porcentaje, Persona persona) {
-        this.persona = persona;
+    public HardSkill(Integer id, String habilidad, int porcentaje, Persona persona) {
+        this.id = id;
         this.habilidad = habilidad;
         this.porcentaje = porcentaje;
-      
+        this.persona = persona;
     }
     
     //Recibe la relacion 1-n 

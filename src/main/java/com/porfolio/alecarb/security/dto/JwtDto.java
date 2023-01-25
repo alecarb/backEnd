@@ -48,4 +48,5 @@ public class JwtDto {
         this.authorities = authorities;
     }
 
+    
 }

@@ -3,8 +3,12 @@ package com.porfolio.alecarb.controller;
 
 import com.porfolio.alecarb.dto.EducacionDto;
 import com.porfolio.alecarb.entity.Educacion;
+import com.porfolio.alecarb.entity.Persona;
 import com.porfolio.alecarb.service.EducacionService;
+import com.porfolio.alecarb.service.PersonaService;
 import java.util.List;
+import java.util.NoSuchElementException;
+import org.hibernate.resource.beans.container.internal.NoSuchBeanException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +32,8 @@ public class EducacionController {
     
     @Autowired 
     EducacionService educacionService;
+    @Autowired
+    PersonaService personaService;
     
     @GetMapping("/list")
     @ResponseBody
@@ -37,25 +43,36 @@ public class EducacionController {
     
     @GetMapping("/ver/{id}")
     @ResponseBody
-    public ResponseEntity<Educacion>getOneByID(@PathVariable(value = "id") Long id){
+    public ResponseEntity<?> getOneByID(@PathVariable int id) {
         try {
             Educacion educacion = educacionService.findById(id).get();
-            return new ResponseEntity(educacion,HttpStatus.OK);
+            return new ResponseEntity(educacion, HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println("Error: " + e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     
-//    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/new/educacion")
-    public void save(@RequestBody Educacion educacion){
-        educacionService.save(educacion);
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/new/educacion/{id}")
+    @ResponseBody
+    public ResponseEntity<?> addEduc(@PathVariable int id,@RequestBody Educacion educacion){
+        try {
+            Persona persona = personaService.findById(id)
+                    .orElseThrow(()-> new NoSuchElementException("Persona no encontrada id: " + id));
+            educacion.setPersona(persona);
+            educacionService.save(educacion);
+            return new ResponseEntity(educacion, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return new ResponseEntity(educacion, HttpStatus.NOT_FOUND);
+        }
     }
     
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     @ResponseBody
-    public ResponseEntity<?> editEducacion(@PathVariable("id") Long id,@RequestBody EducacionDto educacionDto){
+    public ResponseEntity<?> editEducacion(@PathVariable("id") int id,@RequestBody EducacionDto educacionDto){
         try {
             Educacion educacion = educacionService.findById(id).get(); //buscamos la educacion
             //educacion.setImage_est(educacionDto.getImage_est());
@@ -73,10 +90,21 @@ public class EducacionController {
         }
     }
     
- //   @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id){
-        educacionService.deleteById(id);
+    @ResponseBody
+    public ResponseEntity<?> deleteEduc(@PathVariable int id){
+        try {
+            Educacion educacion = educacionService.findById(id)
+                    .orElseThrow(()-> new NoSuchElementException("No se encuatra el objeto educacion con el id: " + id));
+            Persona persona = educacion.getPersona();
+            persona.getEducaciones().remove(educacion);
+            educacionService.deleteById(id);
+            return new ResponseEntity(HttpStatus.OK);
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
     }
-    
 }

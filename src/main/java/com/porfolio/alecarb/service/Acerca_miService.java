@@ -20,7 +20,7 @@ public class Acerca_miService {
        return acerca_miRepository.findAll();
     }
    
-    public Optional<Acerca_mi> fndById(Long id){
+    public Optional<Acerca_mi> fndById(int id){
         return acerca_miRepository.findById(id);
     }
     
@@ -32,7 +32,7 @@ public class Acerca_miService {
         acerca_miRepository.delete(acerca_mi);
     }
     
-    public void deleteByid(Long id){
+    public void deleteByid(int id){
         acerca_miRepository.deleteById(id);
     }
     

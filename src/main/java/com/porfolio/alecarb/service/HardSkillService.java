@@ -21,7 +21,7 @@ public class HardSkillService {
         return hardSkillRepository.findAll();
     }
     
-    public Optional<HardSkill> findByid(Long id){
+    public Optional<HardSkill> findByid(int id){
         return hardSkillRepository.findById(id);
     }
     
@@ -29,7 +29,7 @@ public class HardSkillService {
         hardSkillRepository.save(hardSkill);
     }
     
-    public void deleteById(Long id){
+    public void deleteById(int id){
         hardSkillRepository.deleteById(id);
     }
 }

@@ -20,7 +20,7 @@ public class Persona {
     
     @Id 
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(name = "nombre")
     private String  nombre;
     @Column(name = "apellido")
@@ -36,14 +36,10 @@ public class Persona {
     @Column(name = "image_perfil")
     private String image_perfil;
     
-    
-    
-    
-    public Persona(){
-        
+    public Persona(){     
     }
     
-    public Persona(Long id, String nombre, String apellido, String telefono, String email, String residencia, int dni, String image_perfil) {
+    public Persona(Integer id, String nombre, String apellido, String telefono, String email, String residencia, int dni, String image_perfil) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -52,16 +48,15 @@ public class Persona {
         this.residencia = residencia;
         this.dni= dni;
         this.image_perfil = image_perfil;
-    }
-    
+    }    
     //Estabelce la relacion 1-n entre persona 
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
-    private List<Educacion> educaciones;
-
+    private List<Trabajo> trabajos;
+    
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    
-    private List<Trabajo> trabajos;
+    private List<Educacion> educaciones;
 
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)    

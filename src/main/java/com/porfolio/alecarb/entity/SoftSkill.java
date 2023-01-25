@@ -19,29 +19,30 @@ public class SoftSkill {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(name = "habilidad")
     private String habilidad;
     @Column (name = "porcentaje")
     private int porcentaje;
-    
+    //Recibe la relacion 1-n 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "persona_id") // crea y añade la FK
+    @NotNull
+    private Persona persona;
+
 
     public SoftSkill() {
     }
 
    
 
-    public SoftSkill(String habilidad, int porcentaje, Persona persona) {
-        this.persona = persona;
+    public SoftSkill(Integer id,String habilidad, int porcentaje, Persona persona) {
+        this.id = id;
         this.habilidad = habilidad;
         this.porcentaje = porcentaje;
+        this.persona = persona;
        
     }
     
     
-    //Recibe la relacion 1-n 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "persona_id") // crea y añade la FK
-    @NotNull
-    private Persona persona;
 }

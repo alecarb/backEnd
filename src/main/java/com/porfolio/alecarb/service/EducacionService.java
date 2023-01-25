@@ -20,7 +20,7 @@ public class EducacionService {
         return educacionRepository.findAll();
     }
     
-    public Optional<Educacion> findById(Long id){
+    public Optional<Educacion> findById(int id){
         return educacionRepository.findById(id);
     }
     
@@ -28,7 +28,7 @@ public class EducacionService {
         educacionRepository.save(educacion);
     }
     
-    public void deleteById(Long id){
+    public void deleteById(int id){
         educacionRepository.deleteById(id);
     }
     

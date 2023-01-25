@@ -19,11 +19,19 @@ import lombok.Setter;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     
- 
+    //se indica que va a ser un Enum de tipo String
     @Enumerated(EnumType.STRING) 
     @NotNull
     private RolNombre rolNombre;
+    
+    public Rol(){
+        
+    }
+    
+    public Rol(@NotNull RolNombre rolNombre){
+        this.rolNombre = rolNombre;
+    }
     
 }

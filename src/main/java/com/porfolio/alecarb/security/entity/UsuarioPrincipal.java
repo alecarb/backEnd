@@ -8,33 +8,48 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+/*
 
+    Clase Encargada de generar la seguridad
+    Clase que implementa los privilegios de cada usuario
+    UserDetails es una clase propia de Spring Security
+*/
 
 public class UsuarioPrincipal implements UserDetails{
+    
     private String nombre;
     private String nombreUsario;
     private String email;
     private String password;
-    private Collection<? extends GrantedAuthority> authoritys;
+    
+    //Variable que nos da la autorizacion  (no confundir con autenticacion)
+    // Coleccion de tipo generico que extiende
+    //de GranthedAutority de Spring security
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String nombre, String nombreUsario, String email, String password, Collection<? extends GrantedAuthority> authoritys) {
+    public UsuarioPrincipal(String nombre, String nombreUsario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
         this.nombreUsario = nombreUsario;
         this.email = email;
         this.password = password;
-        this.authoritys = authoritys;
+        this.authorities = authorities;
     }
 
- //Metodo que construya todos los roles
+ //Metodo que construye los privilegios (autorizacion)
     public static UsuarioPrincipal build(Usuario usuario){
-        List<GrantedAuthority> authorities =usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolNombre().name()))
+        List<GrantedAuthority> authorities =usuario.getRoles()
+                .stream()
+                .map(rol -> new SimpleGrantedAuthority(rol.getRolNombre().name()))
                 .collect(Collectors.toList());
-        return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(), usuario.getPassword(), authorities);
+        return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(),
+                usuario.getPassword(), authorities);
     }
 
+    //@Override los que tengan esta anotacion 
+    //son metodos de UserDetails de SpringSecurity
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authoritys;
+        return authorities;
     }
 
     @Override
@@ -42,15 +57,6 @@ public class UsuarioPrincipal implements UserDetails{
         return password;
     }
     
-  
-    public String getNombre(){
-        return nombre;
-    }
-   
-    public String getEmail() {
-        return email;
-    }
-
 
     @Override
     public String getUsername() {
@@ -77,6 +83,16 @@ public class UsuarioPrincipal implements UserDetails{
         return true;
     }
     
+        
+    public String getNombre(){
+        return nombre;
+    }
+   
     
+    public String getEmail() {
+        return email;
+    }
+
+
     
 }

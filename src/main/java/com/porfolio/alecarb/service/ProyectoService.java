@@ -19,7 +19,7 @@ public class ProyectoService {
         return proyectoRepository.findAll();
     }
     
-    public Optional<Proyecto> findById(Long id){
+    public Optional<Proyecto> findById(int id){
         return proyectoRepository.findById(id);
     }
     
@@ -27,7 +27,7 @@ public class ProyectoService {
         proyectoRepository.save(proyecto);
     }
     
-    public void deleteById(Long id){
+    public void deleteById(int id){
         proyectoRepository.deleteById(id);
     }
     
