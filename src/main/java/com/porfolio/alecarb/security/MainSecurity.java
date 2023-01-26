@@ -28,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 
+
 public class MainSecurity implements WebMvcConfigurer{
 
     @Autowired
@@ -77,7 +78,7 @@ public class MainSecurity implements WebMvcConfigurer{
     public void addCorsMappings(CorsRegistry registry) {
 
         registry.addMapping("/**");
-
+            
     }
 
 }

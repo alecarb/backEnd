@@ -7,7 +7,6 @@ import com.porfolio.alecarb.service.Acerca_miService;
 import com.porfolio.alecarb.service.PersonaService;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,21 +39,6 @@ public class Acerca_miController {
         return acerca_miService.list();
     }
 
-    /*
-    @GetMapping("/ver/{id}")
-    @ResponseBody
-    public ResponseEntity<?> getOneByID(@PathVariable int id) {
-        System.out.println("LLamo al servicio");
-        try {
-            Acerca_mi acerca_mi = acerca_miService.fndById(id).get;
-            return new ResponseEntity(acerca_mi, HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println("Error: "+ e);
-            
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-     */
     @GetMapping("/ver/{id}")
     @ResponseBody
     public ResponseEntity<?> getOneByID(@PathVariable int id) {
