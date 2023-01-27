@@ -14,15 +14,15 @@ public class AlecarbApplication {
 	}
 
         @Bean
-        public WebMvcConfigurer corsConfigurer(){
-            return new WebMvcConfigurer() {
-                @Override
-                public void addCorsMappings(CorsRegistry registry){
-                    registry.addMapping("/**")
-                            .allowedOrigins("https://alecarbargprog.web.app/")
-                            .allowedMethods("*")
-                            .allowedHeaders("*");
-                }
-            };
-        }
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                .allowedOrigins("https://alecarbargprog.web.app")
+                .allowedMethods("*")
+                .allowedHeaders("*");
+            }
+        };
+    }
 }
