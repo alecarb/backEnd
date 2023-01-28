@@ -31,7 +31,7 @@ public class AlecarbApplication {
     }
 */
         @Bean
-    public CorsFilter corsFilter() {
+        public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(false);
