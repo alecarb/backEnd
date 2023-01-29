@@ -3,6 +3,8 @@ package com.porfolio.alecarb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -16,20 +18,10 @@ public class AlecarbApplication {
 		SpringApplication.run(AlecarbApplication.class, args);
 	}
 
-        /*
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                .allowedOrigins("**")
-                //.allowedMethods("*")
-                .allowedHeaders("*");
-            }
-        };
-    }
-*/
+   
+    
+ 
+     /*
         @Bean
         public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -41,5 +33,5 @@ public class AlecarbApplication {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
-
+*/
 }

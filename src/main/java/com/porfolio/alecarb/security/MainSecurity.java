@@ -64,6 +64,19 @@ public class MainSecurity implements WebMvcConfigurer {
     }
 
     @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("http//localhost:8080", "https://alecarbargprog.web.app/")
+                        .allowedMethods("*");
+
+            }
+        };
+
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
@@ -86,7 +99,7 @@ public class MainSecurity implements WebMvcConfigurer {
         registry.addMapping("/**");
             
     
-     */
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cc = new CorsConfiguration();
@@ -103,4 +116,5 @@ public class MainSecurity implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**", cc);
         return source;
     }
+     */
 }
