@@ -3,6 +3,8 @@ package com.porfolio.alecarb.security;
 import com.porfolio.alecarb.security.jwt.JwtEntryPoint;
 import com.porfolio.alecarb.security.jwt.JwtTokenFilter;
 import com.porfolio.alecarb.security.service.UserDetailsImpl;
+import java.util.Arrays;
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -58,19 +61,6 @@ public class MainSecurity implements WebMvcConfigurer {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http//localhost:8080", "https://alecarbargprog.onrender.com")
-                        .allowedMethods("*");
-
-            }
-        };
-
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
@@ -82,7 +72,21 @@ public class MainSecurity implements WebMvcConfigurer {
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
+        http.cors().configurationSource(request -> {
+            CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
+            config.setAllowedOrigins(Arrays.asList("https://alecarbargprog.web.app"));
+            config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+            return config;
+        });
+        /*  
+    http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+           .and().cors().configurationSource(request -> {
+             CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
+             config.setAllowedOrigins(Arrays.asList("http://localhost:8080", "https://alecarbargprog.onrender.com"));
+             config.setAllowedMethods(Collections.singletonList("*"));
+             return config;
+    });
+         */
         return http.build();
     }
 
