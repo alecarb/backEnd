@@ -20,7 +20,7 @@ public class AlecarbApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:8080", "https://alecarbargprog.onrender.com")
+                registry.addMapping("/**").allowedOrigins("http://localhost:8080", "https://alecarbargprog.onrender.com", "https://backend-production-dcea.up.railway.app")
                         .allowedMethods("*");
 
             }

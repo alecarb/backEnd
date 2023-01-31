@@ -74,7 +74,8 @@ public class MainSecurity implements WebMvcConfigurer {
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         http.cors().configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
-            config.setAllowedOrigins(Arrays.asList("https://alecarbargprog.web.app"));
+           // config.setAllowedOrigins(Arrays.asList("https://alecarbargprog.web.app"));
+            config.setAllowedOrigins(Arrays.asList("https://backend-production-dcea.up.railway.app"));
             config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
             return config;
         });
