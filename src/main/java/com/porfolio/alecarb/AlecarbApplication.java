@@ -20,8 +20,7 @@ public class AlecarbApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("https://alecarbargprog.web.app")
-               // registry.addMapping("/**").allowedOrigins("http://localhost:8080", "https://alecarbargprog.onrender.com", "https://backend-production-dcea.up.railway.app")
+                registry.addMapping("/**").allowedOrigins("*")
                         .allowedMethods("*");
 
             }
@@ -29,19 +28,4 @@ public class AlecarbApplication {
 
     }
 
-/*
- 
-    
-        @Bean
-        public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(false);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
-    }
-*/
 }
